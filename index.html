@@ -1,0 +1,147 @@
+<!DOCTYPE html> 
+<!-- The doctype declaration tells the browser the version of HTML that the document is written in. -->
+<html lang="en">
+<!-- The <html> element is the root element of an HTML page, and indicates that the page is written in HTML. -->
+<head>
+    <meta charset="UTF-8">
+    <!-- The <meta> element provides metadata about the HTML document, such as character encoding. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- This meta tag tells Internet Explorer to use the latest version of the rendering engine. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The viewport meta tag specifies how the website should be scaled on different devices. -->
+    <title>HTML form to Google Sheet</title>
+    <!-- The title element defines the title of the document, which is displayed in the browser's title bar. -->
+</head>
+ 
+<body style="font-size: 20px; background-color: aquamarine;
+color: red;">
+    <h1 id="msg"></h1>
+    <h1 align="center">B1 JKP Store</h1>
+    <!-- The <h1> element defines a heading. The id attribute creates a unique identifier for the element. -->
+    <div align="center">
+        <form id="myForm">
+        <label for="order_date"><b>Date:</b></label>
+    <input type="date" name="date"><br>
+    <br><b>Name:</b><select id="name" name="name">
+    <option value="RAGHBIR">RAGHBIR</option>
+    <option value="SUNIL PANDEY">SUNIL PANDEY</option>
+    <option value="SURENDER PAL">SURENDER PAL</option>
+    <option value="GAYALAL">GAYALAL</option>
+    <option value="DINESH">DINESH</option>
+    <option value="RAMSINGH">RAMSINGH</option>
+    <option value="GULLI YADAV">GULLI YADAV</option>
+    <option value="SHARWAN">SHARWAN</option>
+    <option value="BHUPENDER">BHUPENDER</option>
+    <option value="DUDNATH">DUDNATH</option>
+    <option value="RAMCHANDER">RAMCHANDER</option>
+    <option value="RAJKUMAR">RAJKUMAR</option>
+    <option value="HANSRAJ TANWAR">HANSRAJ TANWAR</option>
+    <option value="RAMBALI">RAMBALI</option>
+    <option value="HANSRAJ TANWAR">HANSRAJ TANWAR</option>
+    <option value="PALCHAND">PALCHAND</option>
+    <option value="HANSRAJ">HANSRAJ</option>
+    <option value="LAXMI NARAYAN">LAXMI NARAYAN</option>
+    <option value="RAMULAL">RAMULAL</option>
+    <option value="SURENDER NISHAD">SURENDER NISHAD</option>
+    </select><br><br>
+        <!-- The <input> element is a form control element that allows the user to input data. -->
+        <b>Item:</b><select name="item" id="item">
+            <option value="LT TAPE
+            ">LT TAPE
+        </option>
+            <option value="HT TAPE
+            ">HT TAPE</option>
+            <option value="FW 14">FW 14</option>
+            <option value="FW 16">FW 16</option>
+            <option value="FW 18">FW 18</option>
+            <option value="PRC">PRC</option>
+            <option value="BLADE">BLADE</option>
+            <option value="CRC">CRC</option>
+            <option value="DHOTI">DHOTI</option>
+            <option value="SOCKET 25
+            ">SOCKET 25
+        </option>
+            <option value="SOCKET 50
+            ">SOCKET 50
+        </option>
+            <option value="SOCKET 95
+            ">SOCKET 95
+        </option>
+            <option value="SOCKET 150
+            ">SOCKET 150
+        </option>
+            <option value="SOCKET 300
+            ">SOCKET 300
+        </option>
+            <option value="SOCKET 630
+            ">SOCKET 630
+        </option>
+            <option value="SOCKET LB 95
+            ">SOCKET LB 95
+        </option>
+            <option value="SOCKET LB 150
+            ">SOCKET LB 150
+        </option>
+            <option value="SOCKET LB 300
+            ">SOCKET LB 300
+        </option>
+            <option value="SOCKET LB 630
+            ">SOCKET LB 630
+        </option>
+            <option value="AB CABLE">AB CABLE</option>
+            </select></br></br>
+        <b>Quantity:</b><input type="number" name="quantity" placeholder='Quantity'><br><br>
+        <button type="submit" id="sub">Submit</button>
+        <!-- The <input type="submit"> element creates a submit button. The id attribute creates a unique identifier for the element. -->
+    </form>
+    </div>
+    <script>
+        const form = document.getElementById("myForm");
+      
+        form.addEventListener("sub", function(event) {
+          event.preventDefault();
+      
+          const date = form.elements["date"].value;
+          const name = form.elements["name"].value;
+          const item = form.elements["item"].value;
+          const quantity = form.elements["quantity"].value;
+          
+           // Do something with the form data, such as send it to a server or display it on the page
+        console.log("Date:", Date);
+        console.log("Name:", name);
+        console.log("Item:", item);
+        console.log("Quantity:", quantity);
+    
+        form.reset(); // Clear the form fields after submission
+      });
+    </script>
+    <script>
+        let form = document.querySelector("form");
+        // The document.querySelector() method returns the first element that matches a specified CSS selector.
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // The preventDefault() method stops the form from submitting and prevents the page from refreshing.
+            document.querySelector("#sub").value = "Submiting..";
+            // Change the value of the submit button to "Submitting..." while the form is being submitted.
+            let data = new FormData(form);
+            // The FormData() method creates a new FormData object that contains the values of all the form fields.
+            fetch('https://script.google.com/macros/s/AKfycbwBvC8OrvSSWDu71n72mY5KnRWLlwfE51CoYovq_0ARlEzDd-io0JcHBQ6SAZoCWMYs/exec', {
+                    method: "POST",
+                    body: data
+                })
+                // The fetch() method is used to make a request to the server and retrieve data.
+                // This is an example API endpoint. Replace it with the actual URL for the API endpoint you want to use.
+                .then(res => res.text())
+                // The .then() method is used to handle the response from the server.
+                // The response is converted to text using the res.text() method.
+                .then(data => {
+                    document.querySelector("#msg").innerHTML = data;
+                    // The innerHTML property sets or returns the HTML content of an element.
+                    // Here, we are setting the content of the <h1> element to the response from the server.
+                    document.querySelector("#sub").value = "Submit"
+                    // Change the value of the submit button back to "Submit" after the form has been submitted.
+                });
+        })
+    </script>
+</body>
+</html>
