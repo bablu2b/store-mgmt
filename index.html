@@ -9,13 +9,12 @@
     <!-- This meta tag tells Internet Explorer to use the latest version of the rendering engine. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- The viewport meta tag specifies how the website should be scaled on different devices. -->
-    <title>HTML form to Google Sheet</title>
+    <title>O&M Store</title>
     <!-- The title element defines the title of the document, which is displayed in the browser's title bar. -->
 </head>
  
 <body style="font-size: 20px; background-color: aquamarine;
 color: red;">
-    <h1 id="msg"></h1>
     <h1 align="center">B1 JKP Store</h1>
     <!-- The <h1> element defines a heading. The id attribute creates a unique identifier for the element. -->
     <div align="center">
@@ -92,29 +91,12 @@ color: red;">
             </select></br></br>
         <b>Quantity:</b><input type="number" name="quantity" placeholder='Quantity'><br><br>
         <button type="submit" id="sub">Submit</button>
+        <br><br><br>
+        <h1 id="msg"></h1><br>
+        <button onclick="location.reload()">Reload Page</button>
         <!-- The <input type="submit"> element creates a submit button. The id attribute creates a unique identifier for the element. -->
     </form>
     </div>
-    <script>
-        const form = document.getElementById("myForm");
-      
-        form.addEventListener("sub", function(event) {
-          event.preventDefault();
-      
-          const date = form.elements["date"].value;
-          const name = form.elements["name"].value;
-          const item = form.elements["item"].value;
-          const quantity = form.elements["quantity"].value;
-          
-           // Do something with the form data, such as send it to a server or display it on the page
-        console.log("Date:", Date);
-        console.log("Name:", name);
-        console.log("Item:", item);
-        console.log("Quantity:", quantity);
-    
-        form.reset(); // Clear the form fields after submission
-      });
-    </script>
     <script>
         let form = document.querySelector("form");
         // The document.querySelector() method returns the first element that matches a specified CSS selector.
