@@ -21,7 +21,8 @@ color: red;">
         <form id="myForm">
         <label for="order_date"><b>Date:</b></label>
     <input type="date" name="date"><br>
-    <br><b>Name:</b><select id="name" name="name">
+    <br><b>Name:</b><input id="name" name="name"></input>
+            <datalist id="name">
     <option value="RAGHBIR">RAGHBIR</option>
     <option value="SUNIL PANDEY">SUNIL PANDEY</option>
     <option value="SURENDER PAL">SURENDER PAL</option>
@@ -42,9 +43,10 @@ color: red;">
     <option value="LAXMI NARAYAN">LAXMI NARAYAN</option>
     <option value="RAMULAL">RAMULAL</option>
     <option value="SURENDER NISHAD">SURENDER NISHAD</option>
-    </select><br><br>
+    </datalist><br><br>
         <!-- The <input> element is a form control element that allows the user to input data. -->
-        <b>Item:</b><select name="item" id="item">
+        <b>Item:</b><input list="item" name="item" id="item"></input>
+    <datalist id="item">
             <option value="LT TAPE
             ">LT TAPE
         </option>
@@ -86,7 +88,7 @@ color: red;">
 <option value="CABLE 3*300">CABLE 3*300</option>
 <option value="CABLE 4*300">CABLE 4*300</option>
 <option value="CABLE 3*400">CABLE 3*400</option>
-            </select></br></br>
+            </datalist></br></br>
         <b>Quantity:</b><input type="number" name="quantity" placeholder='Quantity'><br><br>
         <button type="submit" id="sub">Submit</button>
         <br><br><br>
