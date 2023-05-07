@@ -92,7 +92,24 @@ color: red;">
 <option value="CABLE 3*400">CABLE 3*400</option>
             </select></br></br>
         <b>Quantity:</b><input type="number" name="quantity" placeholder='Quantity' required><br><br>
-        <button type="submit" id="sub">Submit</button>
+    <input name="Address" placeholder='Address'>
+    </br>
+        <button class="sbtn" type="submit" id="sub">Submit</button>
+    <style>
+.sbtn {
+  display: inline-block;
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #4CAF50;
+  border:none;
+  border-radius: 15px;
+
+}
+.sbtn:active {
+  background-color: red;
+  transform: translateY(6px);
+}
+</style>
         <br><br><br>
         <h1 id="msg"></h1><br>
         <button onclick="location.reload()">Reload Page</button>
