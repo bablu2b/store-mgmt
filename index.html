@@ -114,6 +114,15 @@ color: red;">
         <option value="BLACK PAINT">BLACK PAINT</option>
             </select></br></br>
         <b>Quantity:</b><input type="number" name="quantity" placeholder='Quantity' required><br><br>
+            <b>Unit:</b>
+            <select name="unit" id="unit" required>
+                 <option value="Nos.">Nos.</option>
+                 <option value="Metre">M</option>
+                 <option value="Gram">Gram</option>
+                 <option value="Set">Set</option>
+                 <option value="Litre">Litre</option>
+            </select>
+            <br><br>
     <b>Address:</b><input name="address" placeholder='Address'>
     </br>
     </br>
@@ -149,7 +158,7 @@ color: red;">
             // Change the value of the submit button to "Submitting..." while the form is being submitted.
             let data = new FormData(form);
             // The FormData() method creates a new FormData object that contains the values of all the form fields.
-            fetch('https://script.google.com/macros/s/AKfycbxR5E_g_ZH04CWaL8lqWs1gN132hfcWye12v8JHgLSdnb0UQAuc7nthD3dOb4SSBc3F/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbxZB_OcFDg_xmRJOpQSoKoYzs26DUkMu7wA1DC8eLTfw-9Ir2QuuuIGvWdZzr1Lru9e/exec', {
                     method: "POST",
                     body: data
                 })
