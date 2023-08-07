@@ -133,7 +133,7 @@ color: red;">
         <h1 id="msg"></h1><br>
         <button onclick="location.reload()">Reload</button>&nbsp;&nbsp;
         <!-- The <input type="submit"> element creates a submit button. The id attribute creates a unique identifier for the element. -->
-    </form><button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1mtfOXxjvQP_AFzyW74G3TFyUMiqfaSirfNb8rGBRJ50/edit?usp=drivesdk';">View</button>
+    </form><button onClick="viewFunc()">View</button>
     </div>
     <script>
   const divisionSelect = document.getElementById('division');
@@ -283,6 +283,22 @@ color: red;">
     
     // You can replace the alert with your actual script logic
   });
+</script>
+    <script>
+    function viewFunc() {
+        const dropdown = document.getElementById("zone");
+        const selectedOptionValue = dropdown.value;
+        
+        if (selectedOptionValue === "B1") {
+            window.location.href = "https://docs.google.com/spreadsheets/d/1mtfOXxjvQP_AFzyW74G3TFyUMiqfaSirfNb8rGBRJ50/edit?usp=drivesdk";
+        } 
+        else if (selectedOptionValue === "Sec_9") {
+            window.location.href = "https://docs.google.com/spreadsheets/d/1lJed6KXcJhS7rHGsTq7spCW23wajsMTSOJh1VwLfUfA/edit?usp=sharing";
+        }
+        else if (selectedOptionValue === "D4") {
+            window.location.href = "https://docs.google.com/spreadsheets/d/1mMXGgkaGWwMuTTateTNMkA9m4oyAD4a1y-wBm0EFKM0/edit?usp=sharing";
+        }
+    }
 </script>
 </body>
 </html>
