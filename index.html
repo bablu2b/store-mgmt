@@ -24,6 +24,7 @@ color: red;">
   <option value="Select">Select</option>
     <option value="JKP">JKP</option>
     <option value="PLM">PLM</option>
+     option value="SKT">SKT</option> 
   </select>
   
   <label for="zone">Zone:</label>
@@ -36,7 +37,7 @@ color: red;">
             <br><br>
         <!-- The <input> element is a form control element that allows the user to input data. -->
         <b>Item:</b>
-    <select name="item" id="item" required>
+<select name="item" id="item" required>
             <option value="LT TAPE">LT TAPE</option>
             <option value="HT TAPE">HT TAPE</option>
          <option value="HT TAPE 70">HT TAPE 70</option>
@@ -106,7 +107,7 @@ color: red;">
         <option value="YELLOW PAINT">YELLOW PAINT</option>
         <option value="BLUE PAINT">BLUE PAINT</option>
         <option value="BLACK PAINT">BLACK PAINT</option>
-            </select></br></br>
+</select></br></br>
         <b>Quantity:</b><input type="number" name="quantity" placeholder='Quantity' required><br><br>
             <b>Unit:</b>
             <select name="unit" id="unit" required>
@@ -155,6 +156,9 @@ color: red;">
     },
     PLM: {
       Sec_9: ['Ajay Kumar', 'Amit Kumar', 'Ankit Kumar', 'Ashok Kumar', 'Balveer Yadav', 'Banarshi Singh', 'Bhagwan Das', 'Dinesh Kumar', 'Gopal Singh', 'Hukam Singh', 'Jai Parkash', 'Jitendra Singh', 'Jogender Kumar', 'Madan', 'Madan Pal', 'Munish', 'Raju Mishra', 'Rajveer Singh', 'Ram Dass', 'Ramesh Singh Saini', 'Rohit Kumar', 'Sanjeev Kumar', 'Satish Kumar Patel', 'Sudhir Kumar', 'Suraj Patel', 'Magan Singh', 'Suresh Kumar', 'Vinesh Kumar', 'Vipin Kumar', 'Yagya Kumar', 'JITENDER'],
+    },
+      SKT: {
+      AYA_NGR: ['PRINCE RAJ', 'NAUSHAD', 'BABULAL', 'ABHISHEK', 'UMMED', 'JAY PRAKASH', 'SN SHARMA', 'SAHRUKH', 'SURENDER', 'RAMESH', 'TAHIR', 'KAMAL', 'SONU', 'PRAMOD', 'MOHNISH', 'ARIF', 'RAM BAHWAN', 'ANKIT GUPTA'],
     },
   };
   
@@ -284,7 +288,35 @@ color: red;">
                     // Change the value of the submit button back to "Submit" after the form has been submitted.
                 });
         })
-      // Add your script code here
+    }  
+      // Add NEW ZONE code here
+      else if (selectedDivision === 'SKT' && selectedZone === 'AYA_NGR') {
+        let form = document.querySelector("form");
+        // The document.querySelector() method returns the first element that matches a specified CSS selector.
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // The preventDefault() method stops the form from submitting and prevents the page from refreshing.
+            document.querySelector("#runScriptButton").value = "Submiting..";
+            // Change the value of the submit button to "Submitting..." while the form is being submitted.
+            let data = new FormData(form);
+            // The FormData() method creates a new FormData object that contains the values of all the form fields.
+            fetch('https://script.google.com/macros/s/AKfycby79PMJT7Q4l0NGMrpTOvIfADXbzV-gYr16ehmpEavVH65zuwO1KOufEJjfdEHqOZac/exec', {
+                    method: "POST",
+                    body: data
+                })
+                // The fetch() method is used to make a request to the server and retrieve data.
+                // This is an example API endpoint. Replace it with the actual URL for the API endpoint you want to use.
+                .then(res => res.text())
+                // The .then() method is used to handle the response from the server.
+                // The response is converted to text using the res.text() method.
+                .then(data => {
+                    document.querySelector("#msg").innerHTML = data;
+                    // The innerHTML property sets or returns the HTML content of an element.
+                    // Here, we are setting the content of the <h1> element to the response from the server.
+                    document.querySelector("#runScriptButton").value = "Submit"
+                    // Change the value of the submit button back to "Submit" after the form has been submitted.
+                });
+        })
     }
     // Add more conditions as needed for other zones
     
@@ -304,6 +336,9 @@ color: red;">
         }
         else if (selectedOptionValue === "D4") {
             window.location.href = "https://docs.google.com/spreadsheets/d/1mMXGgkaGWwMuTTateTNMkA9m4oyAD4a1y-wBm0EFKM0/edit?usp=sharing";
+        }
+        else if (selectedOptionValue === "AYA_NGR") {
+            window.location.href = "https://docs.google.com/spreadsheets/d/1HSX5rRZodR_pGlu7_oiI1sJGCVBOwJulTJjngfbIFVE/edit?usp=sharing";
         }
     }
 </script>
